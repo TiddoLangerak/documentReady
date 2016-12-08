@@ -1,5 +1,9 @@
 export default new Promise((resolve, reject) => {
-	document.addEventListener(`DOMContentLoaded`, () => {
+	if (document.readyState !== `loading`) {
 		resolve();
-	});
+	} else {
+		document.addEventListener(`DOMContentLoaded`, () => {
+			resolve();
+		});
+	}
 });
